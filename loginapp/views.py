@@ -99,11 +99,12 @@ def video(request, pk):
         return HttpResponse(status=204)
 
 
+@csrf_exempt
 def update_token(request):
-   if request.method == 'POST':
-        data = JSONParser().parse(request)  # request에 있는 새로운 데이터를 data에 넣기
-        serializer = UserSerializer(data=data)  # UserSerializer로 Json으로 변환
-        if serializer.is_valid():  # 형식이 맞으면
-            serializer.save()  # 저장
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+    if request.method == 'POST':
+        user = User.objects.get(id=request.POST["id"])
+        user.token = request.POST["token"]
+        user.save()
+        return HttpResponse("OK", status=200)
+
+
