@@ -56,7 +56,7 @@ def login(request):
         if data['password'] == obj.password:
             return HttpResponse(obj.id, status=200)
         else:
-            return HttpResponse(status=400)
+            return HttpResponse("400", status=400)
 
 # 2-1.video_list
 @csrf_exempt

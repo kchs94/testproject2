@@ -9,7 +9,7 @@ class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video
-        fields = ['id', 'user_id', 'object', 'video', 'thumbnail']  # id는 pk로 쓰이는 자동 생성 필드
+        fields = ['id', 'user_id', 'object', 'video', 'thumbnail','dateTime']  # id는 pk로 쓰이는 자동 생성 필드
 
 
 # User 모델로 만든 데이터를 json 형태로 바꿔준다.
